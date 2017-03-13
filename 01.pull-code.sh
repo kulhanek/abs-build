@@ -19,9 +19,11 @@ function dowload_code() {
 # ------------------------------------------------------------------------------
 
 _PWD=$PWD
-cd  src/projects/ams/3.0
-git chackout -- src/lib/ams/ABSMainHeader.cpp
-cd $_PWD
+if [ -d src/projects/abs/3.0 ]; then
+    cd  src/projects/abs/3.0
+    git checkout -- src/lib/abs/ABSMainHeader.cpp
+    cd $_PWD
+fi
 
 cat repositories | grep -v '^#' | while read A B; do
    dowload_code $A $B || exit 1

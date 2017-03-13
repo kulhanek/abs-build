@@ -3,5 +3,4 @@
 src/thirdparty/boost/1.59.0 boost
 # main code
 src/projects/hipoly/1.0 hipoly
-src/projects/w3tk/1.0 w3tk
-src/projects/ams/8.0 ams
+src/projects/abs/3.0 abs

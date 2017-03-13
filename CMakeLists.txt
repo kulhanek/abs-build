@@ -65,5 +65,5 @@ SET(CMAKE_BUILD_TYPE Release)
 
 # projects ---------------------------------------
 ADD_SUBDIRECTORY(src/projects/hipoly/1.0)
-ADD_SUBDIRECTORY(src/projects/abs/2.0)
+ADD_SUBDIRECTORY(src/projects/abs/3.0)
 

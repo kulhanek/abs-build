@@ -21,9 +21,14 @@ fi
 # ------------------------------------------------------------------------------
 # update revision number
 _PWD=$PWD
-cd src/projects/ams/3.0
+if ! [ -d src/projects/abs/3.0 ]; then
+    echo "src/projects/abs/3.0 - not found"
+    exit 1
+fi
+
+cd src/projects/abs/3.0
 ./UpdateGitVersion activate
-VERS="8.`git rev-list --count HEAD`.`git rev-parse --short HEAD`"
+VERS="3.`git rev-list --count HEAD`.`git rev-parse --short HEAD`"
 cd $_PWD
 
 # ------------------------------------
@@ -37,6 +42,7 @@ NAME="abs"
 ARCH=`uname -m`
 MODE="single" 
 echo "Build: $NAME:$VERS:$ARCH:$MODE"
+echo ""
 
 # build and install software ---------
 cmake -DCMAKE_INSTALL_PREFIX="$SOFTREPO/$PREFIX/$NAME/$VERS/$ARCH/$MODE" .

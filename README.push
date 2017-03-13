@@ -1,0 +1,11 @@
+# !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+# A push operation (02.push-code) is performed on all repositories (by default)
+# or on repositories listed in the 'repositories.push' file. This file should 
+# be created by users who do not have a push access to all github repositories.
+# Its syntax is the same as for the 'repositories' file. The easiest way how to 
+# setup correctly the push operation is to make a copy of the 'repositories' 
+# file as 'repositories.push' and then keep lines with repositories you have
+# push access into. Since 'repositories.push' contains a setup per user, 
+# it should not be commited and pushed into the master github repository and
+# that is the resason why it is included in .gitignore. 
+# !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!

@@ -18,7 +18,10 @@ function dowload_code() {
 
 # ------------------------------------------------------------------------------
 
-rm -f src/projects/ams/8.0/src/lib/ams/AMSMainHeader.hpp
+_PWD=$PWD
+cd  src/projects/ams/3.0
+git chackout -- src/lib/ams/ABSMainHeader.cpp
+cd $_PWD
 
 cat repositories | grep -v '^#' | while read A B; do
    dowload_code $A $B || exit 1

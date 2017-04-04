@@ -19,6 +19,7 @@ SET(DEVELOPMENT_ROOT "${CMAKE_BINARY_DIR}/src")
 
 # extra options ----------------------------------
 SET(TRY_QT_LIB          OFF  CACHE INTERNAL "QT is not neccessary" FORCE)
+SET(AMS_CORE_ONLY       ON  CACHE BOOL "Only AMS core library?"   FORCE)
 
 # ==============================================================================
 # libraries --------------------------------------------------------------------
@@ -65,5 +66,7 @@ SET(CMAKE_BUILD_TYPE Release)
 
 # projects ---------------------------------------
 ADD_SUBDIRECTORY(src/projects/hipoly/1.0)
+ADD_SUBDIRECTORY(src/projects/w3tk/1.0)
+ADD_SUBDIRECTORY(src/projects/ams/8.0)
 ADD_SUBDIRECTORY(src/projects/abs/3.0)
 

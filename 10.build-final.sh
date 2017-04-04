@@ -1,6 +1,6 @@
 #!/bin/bash
 
-SITES="clusters"
+SITES="pbspro"
 PREFIX="core"
 
 # ------------------------------------------------------------------------------
@@ -54,7 +54,7 @@ ln -s /software/ncbr/softmods/8.0/etc/abs $SOFTREPO/$PREFIX/$NAME/$VERS/$ARCH/$M
 
 # prepare build file -----------------
 SOFTBLDS="$AMS_ROOT/etc/map/builds/$PREFIX"
-VERIDX=`ams-map-manip newverindex $PKG`
+VERIDX=`ams-map-manip newverindex $NAME:$VERS:$ARCH:$MODE`
 
 cat > $SOFTBLDS/$NAME:$VERS:$ARCH:$MODE.bld << EOF
 <?xml version="1.0" encoding="UTF-8"?>

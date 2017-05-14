@@ -3,6 +3,11 @@
 SITES="pbspro"
 PREFIX="core"
 
+if [ "`hostname -f`" != "deb8.ncbr.muni.cz" ]; then
+    echo "unsupported build machine!"
+    exit 1
+fi
+
 # ------------------------------------------------------------------------------
 # add cmake from modules if they exist
 if type module &> /dev/null; then

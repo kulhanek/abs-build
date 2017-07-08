@@ -71,6 +71,11 @@ cat > $SOFTBLDS/$NAME:$VERS:$ARCH:$MODE.bld << EOF
         <variable name="ABS_ROOT" value="\$SOFTREPO/$PREFIX/$NAME/$VERS/$ARCH/$MODE" operation="set"/>
         <script   name="\$SOFTREPO/$PREFIX/$NAME/$VERS/$ARCH/$MODE/etc/boot/init.abs" type="inline"/>
     </setup>
+    <dependencies>
+        <syncdepend build="abs-rsync:3.1.2:x86_64:single"/>
+        <syncdepend build="tigervnc:1.8.0:x86_64:single"/>
+        <syncdepend build="screen:4.6.0:x86_64:single"/>
+    </dependencies>
 </build>
 EOF
 

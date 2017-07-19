@@ -2,7 +2,7 @@
 Utilities for testing and building of the [ABS - Advanced Batch System](https://github.com/kulhanek/abs) package.
 
 ## ABS Features:
-* alternative front-end for (PBSPro)[http://pbspro.org/]
+* alternative front-end for [PBSPro](http://pbspro.org/)
 * integration with [AMS - Advanced Module System](https://github.com/kulhanek/ams)
 
 ## Testing Mode

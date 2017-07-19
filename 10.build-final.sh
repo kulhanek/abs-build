@@ -8,6 +8,12 @@ if [ "`hostname -f`" != "deb8.ncbr.muni.cz" ]; then
     exit 1
 fi
 
+# ------------------------------------
+if [ -z "$AMS_ROOT" ]; then
+   echo "ERROR: This installation script works only in the Infinity environment!"
+   exit 1
+fi
+
 # ------------------------------------------------------------------------------
 # add cmake from modules if they exist
 if type module &> /dev/null; then
@@ -36,12 +42,6 @@ cd src/projects/abs/3.0
 VERS="3.`git rev-list --count HEAD`.`git rev-parse --short HEAD`"
 cd $_PWD
 
-# ------------------------------------
-if [ -z "$AMS_ROOT" ]; then
-   echo "ERROR: This installation script works only in the Infinity environment!"
-   exit 1
-fi
-
 # names ------------------------------
 NAME="abs"
 ARCH=`uname -m`
@@ -49,12 +49,18 @@ MODE="single"
 echo "Build: $NAME:$VERS:$ARCH:$MODE"
 echo ""
 
+echo ">>> Number of CPUs for building: $N"
+echo ""
+
 # build and install software ---------
 cmake -DCMAKE_INSTALL_PREFIX="$SOFTREPO/$PREFIX/$NAME/$VERS/$ARCH/$MODE" .
-make install
+if [ $? -ne 0 ]; then exit 1; fi
+
+make -j "$N" install
 if [ $? -ne 0 ]; then exit 1; fi
 
 # make link to global setup
+unlink "$SOFTREPO/$PREFIX/$NAME/$VERS/$ARCH/$MODE/etc/sites" 2> /dev/null
 ln -s /software/ncbr/softmods/8.0/etc/abs $SOFTREPO/$PREFIX/$NAME/$VERS/$ARCH/$MODE/etc/sites
 
 # prepare build file -----------------
@@ -71,13 +77,15 @@ cat > $SOFTBLDS/$NAME:$VERS:$ARCH:$MODE.bld << EOF
         <variable name="ABS_ROOT" value="\$SOFTREPO/$PREFIX/$NAME/$VERS/$ARCH/$MODE" operation="set"/>
         <script   name="\$SOFTREPO/$PREFIX/$NAME/$VERS/$ARCH/$MODE/etc/boot/init.abs" type="inline"/>
     </setup>
-    <dependencies>
-        <syncdepend build="abs-rsync:3.1.2:x86_64:single"/>
-        <syncdepend build="tigervnc:1.8.0:x86_64:single"/>
-        <syncdepend build="screen:4.6.0:x86_64:single"/>
-    </dependencies>
+    <deps>
+        <dep name="abs-rsync"               type="sync"/>
+        <dep name="tigervnc"                type="sync"/>
+        <dep name="screen"                  type="sync"/>
+        <dep name="ncbr-personal-libpbspro" type="deb"/>
+    </deps>
 </build>
 EOF
+if [ $? -ne 0 ]; then exit 1; fi
 
 ams-map-manip addbuilds $SITES $NAME:$VERS:$ARCH:$MODE
 if [ $? -ne 0 ]; then exit 1; fi

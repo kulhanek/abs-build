@@ -2,10 +2,12 @@
 Utilities for testing and building of the [ABS - Advanced Batch System](https://github.com/kulhanek/abs) package.
 
 ## ABS Features:
-* alternative front-end for (PBSPro)[http://pbspro.org/]
+* alternative front-end for [PBSPro](http://pbspro.org/)
 * integration with [AMS - Advanced Module System](https://github.com/kulhanek/ams)
 
-## Testing Mode
+## Building and Installation
+
+### Testing Mode
 ```bash
 $ git clone --recursive https://github.com/kulhanek/abs-build.git
 $ cd abs-build
@@ -14,7 +16,7 @@ $ ./01.pull-code.sh
 $ ./04.build-inline.sh      # build the code inline in src/
 ```
 
-## Production Build into the Infinity software repository
+### Production Build into the Infinity software repository
 ```bash
 $ git clone --recursive https://github.com/kulhanek/abs-build.git
 $ cd abs-build

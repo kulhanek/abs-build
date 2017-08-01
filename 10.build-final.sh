@@ -38,7 +38,7 @@ fi
 
 cd src/projects/abs/3.0
 ./UpdateGitVersion activate
-if [ $? -ne 0 ]; then exit 1; fi
+if [ $? -ne 0 ]; then echo "UpdateGitVersion failed"; exit 1; fi
 VERS="3.`git rev-list --count HEAD`.`git rev-parse --short HEAD`"
 if [ $? -ne 0 ]; then exit 1; fi
 cd $_PWD

@@ -3,10 +3,12 @@
 SITES="pbspro"
 PREFIX="core"
 
-if [ "`hostname -f`" != "deb8.ncbr.muni.cz" ]; then
+if [[ ! ( ( "`hostname -f`" == "deb8.ncbr.muni.cz" ) || ( "`hostname -f`" == *"salomon"* ) )  ]]; then
     echo "unsupported build machine!"
     exit 1
 fi
+
+set -o pipefail
 
 # ------------------------------------
 if [ -z "$AMS_ROOT" ]; then
@@ -15,10 +17,7 @@ if [ -z "$AMS_ROOT" ]; then
 fi
 
 # ------------------------------------------------------------------------------
-# add cmake from modules if they exist
-if type module &> /dev/null; then
-    module add cmake
-fi
+module add cmake
 
 # determine number of available CPUs if not specified
 if [ -z "$N" ]; then
@@ -39,7 +38,9 @@ fi
 
 cd src/projects/abs/3.0
 ./UpdateGitVersion activate
+if [ $? -ne 0 ]; then exit 1; fi
 VERS="3.`git rev-list --count HEAD`.`git rev-parse --short HEAD`"
+if [ $? -ne 0 ]; then exit 1; fi
 cd $_PWD
 
 # names ------------------------------
@@ -61,7 +62,7 @@ if [ $? -ne 0 ]; then exit 1; fi
 
 # make link to global setup
 unlink "$SOFTREPO/$PREFIX/$NAME/$VERS/$ARCH/$MODE/etc/sites" 2> /dev/null
-ln -s /software/ncbr/softmods/8.0/etc/abs $SOFTREPO/$PREFIX/$NAME/$VERS/$ARCH/$MODE/etc/sites
+ln -s "$AMS_ROOT/etc/abs" "$SOFTREPO/$PREFIX/$NAME/$VERS/$ARCH/$MODE/etc/sites"
 
 # prepare build file -----------------
 SOFTBLDS="$AMS_ROOT/etc/map/builds/$PREFIX"

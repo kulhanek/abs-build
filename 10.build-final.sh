@@ -17,7 +17,7 @@ if [ -z "$AMS_ROOT" ]; then
 fi
 
 # ------------------------------------------------------------------------------
-module add cmake
+module add cmake git
 
 # determine number of available CPUs if not specified
 if [ -z "$N" ]; then
@@ -25,6 +25,9 @@ if [ -z "$N" ]; then
     type nproc &> /dev/null
     if type nproc &> /dev/null; then
         N=`nproc --all`
+    fi
+    if [ "$N" -gt 4 ]; then
+        N=4
     fi
 fi
 

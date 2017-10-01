@@ -10,3 +10,13 @@ tools.paths
 06.gen-runtime-paths.sh
 08.git-status.sh
 abs-build.creator.user
+CMakeCache.txt
+CMakeFiles/
+Makefile
+ams.log
+bin/
+cmake_install.cmake
+install_manifest.txt
+lib/
+sbin/
+test/

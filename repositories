@@ -1,6 +1,6 @@
 # local directory | repository | test
 # thirdparty
-src/thirdparty/boost/1.59.0 boost
+src/thirdparty/boost/1.65.1 boost
 # main code
 src/projects/cmake-modules/1.0 cmake-modules
 src/projects/hipoly/1.0 hipoly

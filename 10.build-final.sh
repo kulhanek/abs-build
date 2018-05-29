@@ -2,6 +2,7 @@
 
 SITES="pbspro"
 PREFIX="core"
+REV="r516"
 
 if [[ ! ( ( "`hostname -f`" == "deb8.ncbr.muni.cz" ) || ( "`hostname -f`" == *"salomon"* ) )  ]]; then
     echo "unsupported build machine!"
@@ -65,7 +66,7 @@ if [ $? -ne 0 ]; then exit 1; fi
 
 # make link to global setup
 unlink "$SOFTREPO/$PREFIX/$NAME/$VERS/$ARCH/$MODE/etc/sites" 2> /dev/null
-ln -s "$AMS_ROOT/etc/abs" "$SOFTREPO/$PREFIX/$NAME/$VERS/$ARCH/$MODE/etc/sites"
+ln -s "$AMS_ROOT/etc/abs-$REV" "$SOFTREPO/$PREFIX/$NAME/$VERS/$ARCH/$MODE/etc/sites"
 
 # prepare build file -----------------
 SOFTBLDS="$AMS_ROOT/etc/map/builds/$PREFIX"

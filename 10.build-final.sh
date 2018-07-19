@@ -33,19 +33,10 @@ if [ -z "$N" ]; then
 fi
 
 # ------------------------------------------------------------------------------
-# update revision number
-_PWD=$PWD
-if ! [ -d src/projects/abs/3.0 ]; then
-    echo "src/projects/abs/3.0 - not found"
-    exit 1
+# run pre-installation hook if available
+if [ -f ./preinstall-hook ]; then
+    source ./preinstall-hook || exit 1
 fi
-
-cd src/projects/abs/3.0
-./UpdateGitVersion activate
-if [ $? -ne 0 ]; then echo "UpdateGitVersion failed"; exit 1; fi
-VERS="3.`git rev-list --count HEAD`.`git rev-parse --short HEAD`"
-if [ $? -ne 0 ]; then exit 1; fi
-cd $_PWD
 
 # names ------------------------------
 NAME="abs"

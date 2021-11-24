@@ -4,11 +4,6 @@ SITES="pbspro"
 PREFIX="core"
 REV="r516"
 
-if [[ ! ( ( "`hostname -f`" == "deb8.ncbr.muni.cz" ) || ( "`hostname -f`" == *"salomon"* ) )  ]]; then
-    echo "unsupported build machine!"
-    exit 1
-fi
-
 set -o pipefail
 
 # ------------------------------------

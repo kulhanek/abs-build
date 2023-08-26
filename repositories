@@ -3,8 +3,8 @@
 src/thirdparty/boost/1.65.1 boost master
 src/thirdparty/hwloc/2.4.1 hwloc master
 # main code
-src/projects/cmake-modules/1.0 cmake-modules
-src/projects/hipoly/1.0 hipoly
-src/projects/w3tk/1.0 w3tk
-src/projects/ams/8.0 ams
-src/projects/abs/3.0 abs
+src/projects/cmake-modules/1.0 cmake-modules main
+src/projects/hipoly/1.0 hipoly main
+src/projects/w3tk/1.0 w3tk main
+src/projects/ams/8.0 ams main
+src/projects/abs/3.0 abs main

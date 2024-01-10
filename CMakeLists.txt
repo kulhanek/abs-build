@@ -70,8 +70,8 @@ ADD_SUBDIRECTORY(src/thirdparty/hwloc/2.4.1)
 # projects ---------------------------------------
 ADD_SUBDIRECTORY(src/projects/hipoly/1.0)
 ADD_SUBDIRECTORY(src/projects/w3tk/1.0)
-ADD_SUBDIRECTORY(src/projects/ams/8.0)
-ADD_SUBDIRECTORY(src/projects/abs/3.0)
+ADD_SUBDIRECTORY(src/projects/ams/9.0)
+ADD_SUBDIRECTORY(src/projects/abs/4.0)
 
 # ==============================================================================
 # inter-project dependencies  --------------------------------------------------

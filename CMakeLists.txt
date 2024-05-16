@@ -40,8 +40,7 @@ SET(CMAKE_SKIP_BUILD_RPATH  FALSE)
 SET(CMAKE_BUILD_WITH_INSTALL_RPATH FALSE) 
 
 # the RPATH to be used when installing
-# /software/gcc/4.9.2/lib64/ is added due to RT#200437 for CERIT-SC
-SET(CMAKE_INSTALL_RPATH "${CMAKE_INSTALL_PREFIX}/lib:/software/gcc/4.9.2/lib64/")
+SET(CMAKE_INSTALL_RPATH "${CMAKE_INSTALL_PREFIX}/lib")
 
 # add the automatically determined parts of the RPATH
 # which point to directories outside the build tree to the install RPATH
@@ -56,8 +55,8 @@ SET(CMAKE_C_FLAGS_RELEASE "-O2 -m64")
 SET(CMAKE_C_FLAGS_DEBUG "-g -m64 -Wall -Werror -pedantic-errors -Wundef -Wno-long-long")
 
 # C++ options
-SET(CMAKE_CXX_FLAGS_RELEASE "-O2 -m64")
-SET(CMAKE_CXX_FLAGS_DEBUG "-O0 -m64 -g -Wall -Werror -pedantic-errors -Wundef -Wno-long-long")
+SET(CMAKE_CXX_FLAGS_RELEASE "-O2 -std=c++11 -m64")
+SET(CMAKE_CXX_FLAGS_DEBUG "-O0 -std=c++11 -m64 -g -Wall -Werror -pedantic-errors -Wundef -Wno-long-long")
 
 SET(CMAKE_BUILD_TYPE Release)
 #SET(CMAKE_BUILD_TYPE Debug)

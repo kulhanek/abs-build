@@ -3,12 +3,12 @@
 # ------------------------------------------------------------------------------
 # update revision number
 _PWD=$PWD
-if ! [ -d src/projects/abs/3.0 ]; then
-    echo "src/projects/abs/3.0 - not found"
+if ! [ -d src/projects/abs/4.0 ]; then
+    echo "src/projects/abs/4.0 - not found"
     exit 1
 fi
 # generate ABS version information --
-cd src/projects/abs/3.0 || exit 1
+cd src/projects/abs/4.0 || exit 1
 ./UpdateGitVersion activate || exit 1
 VERS="3.`git rev-list --count HEAD`.`git rev-parse --short HEAD`"
 cd $_PWD
